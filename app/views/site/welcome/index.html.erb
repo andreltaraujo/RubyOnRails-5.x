@@ -3,11 +3,11 @@
 <% if user_signed_in? %>
   <h2>"User <%= current_user.email %> Logado"</h2>
     <% else %>
-      <h2>"Logar User"</h2>
+     <%= link_to "Logar User", users_backoffice_welcome_index_path, class:"btn btn-primary" %>
 <% end %>
 
-<% if admin_signed_in? %>
-  <h2>"Admin <%= current_admin.email %> Logado"</h2>
-    <% else %>
-      <h2>"Logar Admin</h2>
-<% end %>
+  <% if admin_signed_in? %>
+    <h2>"Admin <%= current_admin.email %> Logado"</h2>
+      <% else %>
+        <%= link_to "Logar Admin", admins_backoffice_admins_path, class:"btn btn-primary" %>
+  <% end %>

@@ -41,7 +41,11 @@ gem 'devise'
 # Repository for collecting Locale data for Ruby on Rails I18n
 gem 'rails-i18n', '~> 5.1'
 # A terminal spinner for tasks that have non-deterministic time frame
-gem 'tty-spinner' 
+gem 'tty-spinner'
+# A library for generating fake data such as names, addresses, and phone numbers.
+gem 'faker'
+# Pretty print your Ruby objects with style.
+gem 'awesome_print'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
