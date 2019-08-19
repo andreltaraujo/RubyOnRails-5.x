@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title><%= "#{action_message} Subject" %></title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  </head>
+
+  <% if @subject.errors.any?%>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul>
+        <% @subject.errors.full_messages.each do |message| %>
+        <li>
+          <strong><%= message %></strong>
+        <% end %>
+        </li>
+      </ul>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+
+  <body class="bg-gradient-primary">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-10">
+          <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+              <!-- Nested Row within Card Body -->
+              <div class="row justify-content-md-center">
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4"><%= "#{action_message} Subject" %></h1>
+                    </div>
+                    <hr>
+                    <%= form_with(model: [:admins_backoffice, @subject ], local: true, html: { class: "user" }) do |form| %>
+                      <div class="form-group">
+                        <%= form.text_field :description, class:"form-control form-control-user", id:"exampleInputEmail", placeholder:"Subject" %>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-lg-6">
+                          <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Salvar</button>
+                          </a>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

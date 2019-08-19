@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Administradores</title>
+  <title>Assuntos</title>
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -22,7 +22,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Administradores Cadastrados</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Assuntos Cadastrados</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -30,9 +30,8 @@
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Name</th>
-                      <th>email</th>
-                      <th><%= link_to new_admins_backoffice_admin_path, class:"btn btn-success btn-circle btn-sm" do %>
+                      <th>Description</th>
+                      <th><%= link_to new_admins_backoffice_subject_path, class:"btn btn-success btn-circle btn-sm" do %>
                             <i class="fas fa-plus-circle"></i>
                           <% end %>
                       </th>
@@ -40,22 +39,20 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
+                      <th>Id</th>
+                      <th>Description</th>
                       <th></th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <% @admins.each do |admin| %>                    
+                    <% @subjects.each do |subject| %>                    
                       <tr>
-                        <td><%= admin.id %></td>
-                        <td><%= admin.id %></td>
-                        <td><%= admin.email %></td>
-                        <td><%= link_to edit_admins_backoffice_admin_path(admin), class:"btn btn-info btn-circle btn-sm" do %>
+                        <td><%= subject.id %></td>
+                        <td><%= subject.description %></td>
+                        <td><%= link_to edit_admins_backoffice_subject_path(subject), class:"btn btn-info btn-circle btn-sm" do %>
                               <i class="fas fa-user-edit"></i>
                             <% end %>
-                            <%= link_to admins_backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle btn-sm", data: {confirm: "Are you sure?"} do %>
+                            <%= link_to admins_backoffice_subject_path(subject), method: :delete, class:"btn btn-danger btn-circle btn-sm", data: {confirm: "Are you sure?"} do %>
                               <i class="fas fa-trash"></i>
                             <% end %>
                         </td>
