@@ -8,7 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TimeToAnswer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -52,6 +51,12 @@
         <li class="nav-item">
           <%= link_to admins_backoffice_subjects_path, class:"nav-link" do %>
             <i class="fas fa-list-alt"></i></i><span>Assuntos</span>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to admins_backoffice_questions_path, class:"nav-link" do %>
+            <i class="far fa-question-circle"></i><span>Perguntas</span>
           <% end %>
         </li>
         

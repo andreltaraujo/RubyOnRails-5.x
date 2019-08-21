@@ -1,0 +1,8 @@
+'pt-BR':
+  questions_messages:
+    registered: "%{model} Cadastradas" 
+  messages:
+    registered: "%{model} Cadastrados"
+    confirm: Tem certeza que deseja excluir a pergunta? (<b>%{item}>/b>)
+    editing: Editando
+    registering: Cadastrando

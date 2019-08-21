@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><%= @admins.model_name.human(count: 2) %></title>
+  <title><%= @questions.model_name.human(count: 2) %></title>
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -22,47 +22,47 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"><%= t('messages.registered',
-              model: @admins.model_name.human(count: 2)) %></h6>
+              <h6 class="m-0 font-weight-bold text-primary"><%= t('questions_messages.registered',
+                model: @questions.model_name.human(count: 2)) %></h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered table-hover" id="dataTable" cellspacing="0">
                   <thead>
                     <tr>
-                      <th><%= translate_method(@admins, :id) %></th>
-                      <th>Name</th>
-                      <th><%= translate_method(@admins, :email) %></th>
-                      <th class="text-center"><%= link_to new_admins_backoffice_admin_path,
-                      class:"btn btn-success btn-circle btn-sm" do %>
-                      <i class="fas fa-plus-circle"></i>
-                      <% end %>
+                      <th><%= translate_method(@questions, :id) %></th>
+                      <th><%= translate_method(@questions, :description) %></th>
+                      <th><%= translate_method(@questions, :subject) %></th>
+                      <th><%= link_to new_admins_backoffice_question_path,
+                        class:"btn btn-success btn-circle btn-sm" do %>
+                          <i class="fas fa-plus-circle"></i>
+                        <% end %>
                       </th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th><%= translate_method(@admins, :id) %></th>
-                      <th>Name</th>
-                      <th><%= translate_method(@admins, :email) %></th>
+                      <th><%= translate_method(@questions, :id) %></th>
+                      <th><%= translate_method(@questions, :description) %></th>
+                      <th><%= translate_method(@questions, :subject) %></th>
                       <th></th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <% @admins.each do |admin| %>                    
+                    <% @questions.each do |question| %>                    
                       <tr>
-                        <td><%= admin.id %></td>
-                        <td><%= admin.id %></td>
-                        <td><%= admin.email %></td>
-                        <td class="text-center"><%= link_to edit_admins_backoffice_admin_path(admin),
-                        class:"btn btn-info btn-circle btn-sm" do %>
-                        <i class="fas fa-user-edit"></i>
+                        <td><%= question.id %></td>
+                        <td><%= question.description.truncate(80) %></td>
+                        <td><%= question.subject.description %></td>
+                        <td class="text-nowrap"><%= link_to edit_admins_backoffice_question_path(question),
+                          class:"btn btn-info btn-circle btn-sm" do %>
+                            <i class="fas fa-user-edit"></i>
                         <% end %>
-                        <%= link_to admins_backoffice_admin_path(admin), method: :delete,
-                        class:"btn btn-danger btn-circle btn-sm", 
-                        data: {confirm:t('messages.confirm', item: admin.email)} do %>
-                        <i class="fas fa-trash"></i>
-                        <% end %>
+                          <%= link_to admins_backoffice_question_path(question), method: :delete, 
+                          class:"btn btn-danger btn-circle btn-sm", data: { confirm: t('messages.confirm',
+                          item: question.description.truncate(15))} do %>
+                          <i class="fas fa-trash"></i>
+                          <% end %>
                         </td>
                       </tr>
                     <% end %>
