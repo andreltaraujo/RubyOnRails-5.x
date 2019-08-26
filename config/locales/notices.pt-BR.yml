@@ -1,0 +1,14 @@
+'pt-BR':
+  messages:
+    admin:
+      confirm: Tem certeza que deseja excluir o administrador? ( %{item} )
+    question:
+      confirm: Tem certeza que deseja excluir a pergunta? ( %{item} )
+    subject:
+      confirm: Tem certeza que deseja excluir o assunto? ( %{item} )
+  alerts:
+    modal:
+      header:
+        confirm: Pronto para sair?
+      body:
+        confirm: Selecione "Sair" abaixo se você está pronto para encerrar sua sessão atual. 

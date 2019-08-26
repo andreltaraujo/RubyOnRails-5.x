@@ -1,0 +1,8 @@
+'pt-BR':
+  questions_headers:
+    registered: "%{model} Cadastradas" 
+  headers:
+    registered: "%{model} Cadastrados"
+    editing: Editando
+    registering: Cadastrando
+    welcome: Bem-vindo

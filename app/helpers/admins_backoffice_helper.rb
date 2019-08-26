@@ -4,7 +4,7 @@ module AdminsBackofficeHelper
     if object && method
       object.model.human_attribute_name(method)
     else
-      "Message"
+      "Error_Message"
     end
   end
 end

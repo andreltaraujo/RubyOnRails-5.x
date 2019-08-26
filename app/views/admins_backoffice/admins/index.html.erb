@@ -22,7 +22,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"><%= t('messages.registered',
+              <h6 class="m-0 font-weight-bold text-primary"><%= t('headers.registered',
               model: @admins.model_name.human(count: 2)) %></h6>
             </div>
             <div class="card-body">
@@ -60,7 +60,7 @@
                         <% end %>
                         <%= link_to admins_backoffice_admin_path(admin), method: :delete,
                         class:"btn btn-danger btn-circle btn-sm", 
-                        data: {confirm:t('messages.confirm', item: admin.email)} do %>
+                        data: {confirm: t('messages.admin.confirm', item: admin.email)} do %>
                         <i class="fas fa-trash"></i>
                         <% end %>
                         </td>
@@ -91,15 +91,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><%= t('alerts.modal.header.confirm') %></h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body"><%= t('alerts.modal.body.confirm') %></div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <%= link_to "Logout", destroy_admin_session_path, method: :delete, class:"btn btn-primary"%>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal"><%= t('label.Cancel') %></button>
+          <%= link_to t('label.Logout'), destroy_admin_session_path, method: :delete, class:"btn btn-primary" %>
         </div>
       </div>
     </div>

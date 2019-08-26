@@ -1,9 +1,9 @@
 class AdminsBackoffice::AdminsController < AdminsBackofficeController
   before_action :verify_password, only: [:update]
   before_action :set_admin, only: [:edit, :update, :destroy]
+  before_action :get_admins, only: [:index, :new, :edit]
   
   def index
-    @admins = Admin.all
   end
 
   def new
@@ -48,6 +48,10 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
 
   def set_admin
     @admin = Admin.find(params[:id])
+  end
+
+  def get_admins
+    @admins = Admin.all
   end
 
   def params_admin

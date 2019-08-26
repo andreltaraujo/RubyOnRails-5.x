@@ -22,7 +22,8 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"><%= t('messages.registered', model: @subjects.model_name.human(count: 2)) %></h6>
+              <h6 class="m-0 font-weight-bold text-primary"><%= t('headers.registered',
+              model: @subjects.model_name.human(count: 2)) %></h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -31,9 +32,10 @@
                     <tr>
                       <th><%= translate_method(@subjects, :id) %></th>
                       <th><%= translate_method(@subjects, :description) %></th>
-                      <th class="text-center"><%= link_to new_admins_backoffice_subject_path, class:"btn btn-success btn-circle btn-sm" do %>
-                            <i class="fas fa-plus-circle"></i>
-                          <% end %>
+                      <th class="text-center"><%= link_to new_admins_backoffice_subject_path,
+                      class:"btn btn-success btn-circle btn-sm" do %>
+                      <i class="fas fa-plus-circle"></i>
+                      <% end %>
                       </th>
                     </tr>
                   </thead>
@@ -49,12 +51,16 @@
                       <tr>
                         <td><%= subject.id %></td>
                         <td><%= subject.description %></td>
-                        <td class="text-center"><%= link_to edit_admins_backoffice_subject_path(subject), class:"btn btn-info btn-circle btn-sm" do %>
-                              <i class="fas fa-user-edit"></i>
-                            <% end %>
-                            <%= link_to admins_backoffice_subject_path(subject), method: :delete, class:"btn btn-danger btn-circle btn-sm", data: {confirm: "Are you sure?"} do %>
-                              <i class="fas fa-trash"></i>
-                            <% end %>
+                        <td class="text-center"><%= link_to edit_admins_backoffice_subject_path(subject),
+                        class:"btn btn-info btn-circle btn-sm" do %>
+                        <i class="fas fa-user-edit"></i>
+                        <% end %>
+                        <%= link_to admins_backoffice_subject_path(subject), method: :delete,
+                        class:"btn btn-danger btn-circle btn-sm",
+                        data: {confirm: t('messages.subject.confirm',
+                        item: subject.description)} do %>
+                        <i class="fas fa-trash"></i>
+                        <% end %>
                         </td>
                       </tr>
                     <% end %>

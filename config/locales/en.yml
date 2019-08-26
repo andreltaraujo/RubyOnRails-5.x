@@ -30,4 +30,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  alerts:
+    modal:
+      header: 
+        confirm: Ready to leave?
+      body:
+        confirm: Select "Logout" below if you are ready to end your current session.

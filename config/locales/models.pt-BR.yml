@@ -18,7 +18,7 @@
         id: Código
         email: e-mail
         password: Senha
-        password_confirmation: Repita Senha
+        password_confirmation: Confirme a Senha
         created_at: Criado em
         updated_at: Atualizado em 
       user:

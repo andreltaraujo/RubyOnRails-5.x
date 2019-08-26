@@ -44,20 +44,31 @@
                       <h1 class="h4 text-gray-900 mb-4"><%= "#{action_message}"%> <%= @question.model_name.human %></h1>
                     </div>
                     <hr>
-                    <%= form_with(model: [:admins_backoffice, @question ], local: true, 
-                                            html: { class: "user" }) do |form| %>
-                      <div class="form-group">
-                        <%= form.text_field :description, class:"form-control form-control-user",
-                          id:"exampleInputEmail", placeholder:"Insert your question" %>
-                      </div>
+                    <%= form_with(model: [:admins_backoffice, @question ], local: true,
+                    html: { class: "user" }) do |form| %>
+                      
                       <div class="form-group">
                         <%= form.collection_select(:subject_id, @subjects, :id, :description, 
                         {}, {class:"form-control"} )%>
                       </div>
+                      
+                      <div class="form-group">
+                        <%= form.text_field :description, class:"form-control form-control-user",
+                          id:"exampleInputEmail", placeholder: @question.model_name.human %>
+                      </div>
+
+                      <div id='answers'>
+                        <%= form.fields_for :answers do |answer| %>
+                          <%= render partial: 'answer_fields', locals: { f: answer } %>
+                        <% end %>
+                        <%= link_to_add_association 'add answer', form, :answers %>
+                      </div>
+
                       <div class="row justify-content-md-center">
                         <div class="col-lg-6">
                           <button type="submit" class="btn btn-primary btn-user btn-block">
-                            Salvar</button>
+                            <%= t('label.Submit') %>
+                          </button>
                         </div>
                       </div>
                     <% end %>

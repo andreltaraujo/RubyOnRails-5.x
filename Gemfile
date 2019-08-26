@@ -46,6 +46,8 @@ gem 'tty-spinner'
 gem 'faker'
 # Pretty print your Ruby objects with style.
 gem 'awesome_print'
+# Dynamic nested forms using jQuery made easy
+gem 'cocoon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

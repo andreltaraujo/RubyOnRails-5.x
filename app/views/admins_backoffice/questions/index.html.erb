@@ -22,8 +22,8 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"><%= t('questions_messages.registered',
-                model: @questions.model_name.human(count: 2)) %></h6>
+              <h6 class="m-0 font-weight-bold text-primary"><%= t('headers.registered',
+              model: @questions.model_name.human(count: 2)) %></h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -55,14 +55,15 @@
                         <td><%= question.description.truncate(80) %></td>
                         <td><%= question.subject.description %></td>
                         <td class="text-nowrap"><%= link_to edit_admins_backoffice_question_path(question),
-                          class:"btn btn-info btn-circle btn-sm" do %>
-                            <i class="fas fa-user-edit"></i>
+                        class:"btn btn-info btn-circle btn-sm" do %>
+                        <i class="fas fa-user-edit"></i>
                         <% end %>
-                          <%= link_to admins_backoffice_question_path(question), method: :delete, 
-                          class:"btn btn-danger btn-circle btn-sm", data: { confirm: t('messages.confirm',
-                          item: question.description.truncate(15))} do %>
-                          <i class="fas fa-trash"></i>
-                          <% end %>
+                        <%= link_to admins_backoffice_question_path(question), method: :delete, 
+                        class:"btn btn-danger btn-circle btn-sm",
+                        data: { confirm: t('messages.question.confirm',
+                        item: question.description.truncate(25))} do %>
+                        <i class="fas fa-trash"></i>
+                        <% end %>
                         </td>
                       </tr>
                     <% end %>
