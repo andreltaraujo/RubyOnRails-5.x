@@ -5,16 +5,80 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', 'site' %>
-    <%= javascript_include_tag 'application', 'site' %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
+    <%= stylesheet_link_tag'application', 'site' %>
+    
   </head>
 
   <body>
-  <h1>LAYOUT SITE</h1>
-    <%= yield %>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+        <%= link_to 'Time do Answer', root_path, class:"navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+          <%= form_with(url: site_search_path, local: true, method: :get, html: { class: "form-inline" }) do |form| %>
+            <%= form.text_field :term, class:"form-control mr-sm-2", placeholder:"Termo para pesquisa" %>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= t('label.Search') %></button>
+          <% end %>
+
+          <ul class="navbar-nav ml-auto">
+            <% unless user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to t('label.Login'), new_user_session_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to t('label.Signup'), new_user_registration_path, class:"nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
+                <div class="dropdown-menu" aria-labelledby="dropdown09">
+                <%= link_to users_backoffice_welcome_index_path, class:"dropdown-item" do %>
+                  <i class="fa fa-user"></i>  <%= t('label.Profile') %>
+                <% end %>
+                <div class="dropdown-divider"></div>
+                <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %>
+                  <i class="fa fa-sign-out"></i>  <%= t('label.Logout') %>
+                <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+        
+      <%= yield %>
+        
+    <%= javascript_include_tag 'application', 'site' %>
+
+    <% if notice %> 
+      <%= javascript_tag do %>
+        $.bootstrapGrowl('<%= notice %>', {
+          type: 'success', // (null, 'info', 'danger', 'success')
+          offset: {from: 'top', amount: 20}, // 'top', or 'bottom'
+          align: 'center', // ('left', 'right', or 'center')
+          width: 250, // (integer, or 'auto')
+          delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+          allow_dismiss: true, // If true then will display a cross to close the popup.
+          stackup_spacing: 10 //
+        });
+      <% end %>
+    <% end %>
+    
+    <% if alert %> 
+      <%= javascript_tag do %>
+        $.bootstrapGrowl('<%= alert %>', {
+          type: 'danger', // (null, 'info', 'danger', 'success')
+          offset: {from: 'top', amount: 20}, // 'top', or 'bottom'
+          align: 'right', // ('left', 'right', or 'center')
+          width: 250, // (integer, or 'auto')
+          delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+          allow_dismiss: true, // If true then will display a cross to close the popup.
+          stackup_spacing: 10 //
+        });
+      <% end %>
+    <% end %>
   </body>
 </html>

@@ -173,10 +173,7 @@
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
               
-              <ul class="nav navbar-nav navbar-right">
-                <li class="notice"><%= notice %></li>
-                <li class="alert"><%= alert %></li>
-                
+              <ul class="nav navbar-nav navbar-right">                
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <%= image_tag 'img.png', alt:''%>
@@ -298,6 +295,34 @@
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'users_backoffice' %>
+
+    <% if notice %> 
+      <%= javascript_tag do %>
+        $.bootstrapGrowl('<%= notice %>', {
+          type: 'success', // (null, 'info', 'danger', 'success')
+          offset: {from: 'top', amount: 20}, // 'top', or 'bottom'
+          align: 'center', // ('left', 'right', or 'center')
+          width: 250, // (integer, or 'auto')
+          delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+          allow_dismiss: true, // If true then will display a cross to close the popup.
+          stackup_spacing: 10 //
+        });
+      <% end %>
+    <% end %>
+    
+    <% if alert %> 
+      <%= javascript_tag do %>
+        $.bootstrapGrowl('<%= alert %>', {
+          type: 'danger', // (null, 'info', 'danger', 'success')
+          offset: {from: 'top', amount: 20}, // 'top', or 'bottom'
+          align: 'right', // ('left', 'right', or 'center')
+          width: 250, // (integer, or 'auto')
+          delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+          allow_dismiss: true, // If true then will display a cross to close the popup.
+          stackup_spacing: 10 //
+        });
+      <% end %>
+    <% end %>
     
   </body>
 </html>

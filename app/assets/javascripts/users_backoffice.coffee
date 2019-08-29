@@ -7,4 +7,5 @@
 //= require fastclick/lib/fastclick
 //= require nprogress/nprogress
 //= require jquery.mCustomScrollbar.concat.min
+//= require bootstrap-growl-ifightcrime/jquery.bootstrap-growl.min
 //= require custom.min
