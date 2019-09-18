@@ -1,30 +1,46 @@
 <main role="main">
   <div class="jumbotron">
     <div class="col-sm-8 mx-auto text-center">
-      <% unless params[:term] %>
-        <h3>Questões</h3>
-      <% else %>
-        <h3>Resultado da pesquisa para o termo:</h3>
-        <hr>
-        <h3>"<%= params[:term] %>"</h3>
-      <% end %>
+      <h3><%= msg_jumbotron %></h3>
     </div>
   </div>
 </main>
-
+<div>
+  <%= form_with url: site_search_subject_path, local: true, method: :get do %>
+  <%= collection_select(:question, :subject_id, @subjects, :id, :description, prompt: true )%>
+    <span style="position: relative; top: -3px;">
+      <%= submit_tag t('label.Filter'), class:"btn btn-outline-success btn-sm" %>
+    </span>
+  <% end %>
+  <%= params.inspect %>
+</div>
 <% @questions.each do |question| %>
-  <%= form_with url: site_answer_path, local: true do |form| %>
+  <%= form_with url: site_answer_path, id:"form_#{question.id}" do |form| %>
     <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <h6 class="border-bottom border-gray pb-2 mb-0"><%= question.description %></h6>
-        <% question.answers.each do |answer| %>
+      <h6 class="border-bottom border-gray pb-2 mb-0">
+        <span class="badge badge-info"><%= question.subject.description %> 
+          <span class="badge badge-pill badge-light"><%= question.subject.questions_count %></span>
+        </span>
+          <%= question.description %></h6>
+          <% question.answers.each do |answer| %>
           <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-              <strong class="d-block text-gray-dark"><%= radio_button_tag 'answer_id', answer.id %> <%= answer.description %></strong>
+              <strong class="d-block text-gray-dark"><%= radio_button_tag 'answer_id',
+                answer.id %><%= answer.description %></strong>
             </p>
           </div>
         <% end %><br>
-        <%= form.submit t('label.Answer'), class:"btn btn-outline-secondary btn-sm" %>
+
+        <%= form.submit t('label.Answer'), class:"btn btn-outline-secondary btn-sm",
+          id: "submit_#{question.id}", disabled: true  %>
     </div>
   <% end %>
+  <script>
+    $('#form_<%= question.id %> :radio').click(function() {
+      var disabled_<%= question.id %> = $('#form_<%= question.id %> :radio').filter(function() { 
+        return $(this).length == 0; }).length > 0;
+          $('#form_<%= question.id %> .btn').prop('disabled', disabled_<%= question.id %>);
+    });  
+  </script>
 <% end %>
 <%= paginate @questions%>

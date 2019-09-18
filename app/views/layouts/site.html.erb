@@ -5,7 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag'application', 'site' %>
+    <%= stylesheet_link_tag 'application', 'site' %>
+    <%= javascript_include_tag 'application', 'site' %>
     
   </head>
 
@@ -20,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarsExample09">
           <%= form_with(url: site_search_path, local: true, method: :get, html: { class: "form-inline" }) do |form| %>
             <%= form.text_field :term, class:"form-control mr-sm-2", placeholder:"Termo para pesquisa" %>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= t('label.Search') %></button>
+            <%= form.submit t('label.Search'), class:"btn btn-outline-success my-2 my-sm-0" %>
           <% end %>
 
           <ul class="navbar-nav ml-auto">
@@ -48,10 +49,8 @@
           </ul>
         </div>
       </nav>
-        
-      <%= yield %>
-        
-    <%= javascript_include_tag 'application', 'site' %>
+
+    <%= yield %>
 
     <% if notice %> 
       <%= javascript_tag do %>
