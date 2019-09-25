@@ -62,7 +62,7 @@ namespace :dev do
     desc "Adiciona perguntas e respostas"
     task add_questions_and_answers: :environment do
       Subject.all.each do |subject|
-        rand(3..7).times do |i|
+        rand(3..5).times do |i|
           params = create_question_params(subject)
           answers_array = params[:question][:answers_attributes]
           

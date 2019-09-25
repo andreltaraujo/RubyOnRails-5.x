@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title><%=  %></title>
+    <title></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -49,6 +49,21 @@
         });
       <% end %>
     <% end %>
-    
+
+    <% unless resource.errors.empty? %>
+      <% resource.errors.full_messages.each do |msg| %>
+        <%= javascript_tag do %>
+          $.bootstrapGrowl('<%= msg %>', {
+            type: 'danger', // (null, 'info', 'danger', 'success')
+            offset: {from: 'top', amount: 20}, // 'top', or 'bottom'
+            align: 'right', // ('left', 'right', or 'center')
+            width: 250, // (integer, or 'auto')
+            delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+            allow_dismiss: true, // If true then will display a cross to close the popup.
+            stackup_spacing: 10 //
+          });
+        <% end %>
+      <% end %>
+    <% end %>   
   </body>
 </html>

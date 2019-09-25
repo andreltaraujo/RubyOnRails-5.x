@@ -7,12 +7,11 @@
 </main>
 <div>
   <%= form_with url: site_search_subject_path, local: true, method: :get do %>
-  <%= collection_select(:question, :subject_id, @subjects, :id, :description, prompt: true )%>
+  <%= collection_select(:question, :subject_id, @subjects, :id, :description, prompt: "Selecione um assunto para filtrar" )%>
     <span style="position: relative; top: -3px;">
-      <%= submit_tag t('label.Filter'), class:"btn btn-outline-success btn-sm" %>
+      <%= submit_tag t('label.Filter'), class:"btn btn-outline-success my-2 my-sm-0 btn-sm" %>
     </span>
   <% end %>
-  <%= params.inspect %>
 </div>
 <% @questions.each do |question| %>
   <%= form_with url: site_answer_path, id:"form_#{question.id}" do |form| %>

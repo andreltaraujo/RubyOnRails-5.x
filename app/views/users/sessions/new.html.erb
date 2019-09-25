@@ -1,81 +1,27 @@
-  <div>
-    <a class="hiddenanchor" id="signup"></a>
-    <a class="hiddenanchor" id="signin"></a>
-
-    <div class="login_wrapper">
-      <div class="animate form login_form">
-        <section class="login_content">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <h1>Login Form</h1>
-            
-            <div>
-              <%= f.email_field :email, class:"form-control", placeholder:"email", autofocus: true %>
-            </div>
-
-            <div>
-              <%= f.password_field :password, class:"form-control", placeholder:"Password" %>
-            </div>
-            
-            <div>
-              <%= f.submit t('label.Login'), class:"btn btn-default submit" %>
-            </div>
-              
-            <div>
-              <a class="reset_pass" href="#">Lost your password?</a>
-            </div>
-
-            <div class="clearfix"></div>
-            
-            <div class="separator">
-              <p class="change_link" >New to site?
-                <%= render "users/shared/links", class:"to_register", id:"#signup" %>
-                <a href="#signup" class="to_register"> Create Account </a>
-              </p>
-
-              <div class="clearfix"></div>
-              <br />
-
-              <div>
-                <p>©2019 All Rights Reserved.</p>
-              </div>
-            </div>
-          <% end %>
-        </section>
+<div class="login_wrapper">
+  <section class="login_content">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h1><%= t('label.Signin') %></h1>
+      <div>
+        <%= f.email_field :email, class:"form-control", autofocus: true, placeholder:"email" %>
       </div>
-
-      <div id="register" class="animate form registration_form">
-        <section class="login_content">
-          <form>
-            <h1>Create Account</h1>
-            <div>
-              <input type="text" class="form-control" placeholder="Username" required="" />
-            </div>
-            <div>
-              <input type="email" class="form-control" placeholder="Email" required="" />
-            </div>
-            <div>
-              <input type="password" class="form-control" placeholder="Password" required="" />
-            </div>
-            <div>
-              <a class="btn btn-default submit" href="index.html">Submit</a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="separator">
-              <p class="change_link">Already a member ?
-                <a href="#signin" class="to_register"> Log in </a>
-              </p>
-
-              <div class="clearfix"></div>
-              <br />
-
-              <div>
-                <p>©2019 All Rights Reserved.</p>
-              </div>
-            </div>
-          </form>
-        </section>
+      <div>
+        <%= f.password_field :password, class:"form-control", placeholder:"password" %>
       </div>
-    </div>
-  </div>
+      <div>
+        <%= f.submit t('label.Signin'), class:"btn btn-default submit" %>
+      </div>
+      <div class="clearfix"></div>
+      <div class="separator">
+        <p class="change_link" >New to site?
+          <%= render "users/shared/links" %>
+        </p>
+        <div class="clearfix"></div>
+        <br />
+        <div>
+          <p>©2019 All Rights Reserved.</p>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</div>

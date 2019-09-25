@@ -24,6 +24,17 @@
       user:
         id: Código
         email: e-mail
+        first_name: Nome
+        last_name: Sobrenome
+        password: Senha
+        password_confirmation: Confirme a Senha
+        created_at: Criado em
+        updated_at: Atualizado em
+      user_profile:
+        id: Código
+        address: Endereço
+        gender: Gênero
+        birthdate: Data de Nascimento
         created_at: Criado em
         updated_at: Atualizado em
       subject:

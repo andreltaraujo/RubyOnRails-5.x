@@ -21,27 +21,29 @@
         <div class="collapse navbar-collapse" id="navbarsExample09">
           <%= form_with(url: site_search_path, local: true, method: :get, html: { class: "form-inline" }) do |form| %>
             <%= form.text_field :term, class:"form-control mr-sm-2", placeholder:"Termo para pesquisa" %>
-            <%= form.submit t('label.Search'), class:"btn btn-outline-success my-2 my-sm-0" %>
+            <%= form.submit t('label.Search'), class:"btn btn-outline-success my-2 my-sm-0 btn-sm" %>
           <% end %>
 
           <ul class="navbar-nav ml-auto">
             <% unless user_signed_in? %>
               <li class="nav-item">
-                <%= link_to t('label.Login'), new_user_session_path, class:"nav-link" %>
+                <%= link_to t('label.Signin'), new_user_session_path, class:"nav-link" %>
               </li>
               <li class="nav-item">
                   <%= link_to t('label.Signup'), new_user_registration_path, class:"nav-link" %>
               </li>
             <% else %>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
+                <a class="nav-link dropdown-toggle" id="dropdown09" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>
+                    <%= current_user.first_name %></a>
                 <div class="dropdown-menu" aria-labelledby="dropdown09">
                 <%= link_to users_backoffice_welcome_index_path, class:"dropdown-item" do %>
-                  <i class="fa fa-user"></i>  <%= t('label.Profile') %>
+                  <i class="fa fa-dashboard"></i>  <%= t('label.Dashboard') %>
                 <% end %>
                 <div class="dropdown-divider"></div>
                 <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %>
-                  <i class="fa fa-sign-out"></i>  <%= t('label.Logout') %>
+                  <i class="fa fa-sign-out"></i>  <%= t('label.Signout') %>
                 <% end %>
                 </div>
               </li>

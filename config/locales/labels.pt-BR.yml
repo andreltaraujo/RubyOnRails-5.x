@@ -1,11 +1,14 @@
 'pt-BR':
   label:
-    Login: Entrar
-    Logout: Sair
+    Home: Início
+    Signin: Entrar
+    Signout: Sair
+    Signup: Criar Conta
     Cancel: Cancelar
     Submit: Salvar
-    Signup: Criar Conta
     Profile: Perfil
+    Dashboard: Painel do Usuário
     Search: Pesquisar
     Answer: Responder
     Filter: Filtrar
+    Edit: Editar
