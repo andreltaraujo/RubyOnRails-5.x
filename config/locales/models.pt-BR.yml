@@ -7,6 +7,9 @@
       user:
         one: Usuário
         other: Usuários
+      user_statistic: 
+        one: Estatítica do Usuário
+        other: Estatísicas do Usuário
       subject:
         one: Assunto
         other: Assuntos
@@ -30,6 +33,9 @@
         password_confirmation: Confirme a Senha
         created_at: Criado em
         updated_at: Atualizado em
+      user_statistic:
+        right_questions: Respostas Certas
+        wrong_questions: Respostas Erradas
       user_profile:
         id: Código
         address: Endereço

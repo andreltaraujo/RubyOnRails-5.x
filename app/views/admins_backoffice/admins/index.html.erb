@@ -14,7 +14,7 @@
             <th><%= translate_method(@admins, :id) %></th>
             <th>Name</th>
             <th><%= translate_method(@admins, :email) %></th>
-            <th class="text-center"><%= link_to new_admins_backoffice_admin_path,
+            <th><%= link_to new_admins_backoffice_admin_path,
             class:"btn btn-success btn-circle btn-sm" do %>
             <i class="fas fa-plus-circle"></i>
             <% end %>
@@ -35,7 +35,7 @@
               <td><%= admin.id %></td>
               <td><%= admin.id %></td>
               <td><%= admin.email %></td>
-              <td class="text-center"><%= link_to edit_admins_backoffice_admin_path(admin),
+              <td><%= link_to edit_admins_backoffice_admin_path(admin),
               class:"btn btn-info btn-circle btn-sm" do %>
               <i class="fas fa-user-edit"></i>
               <% end %>
