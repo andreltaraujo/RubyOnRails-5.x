@@ -20,8 +20,8 @@
         <span class="badge badge-info"><%= question.subject.description %> 
           <span class="badge badge-pill badge-light"><%= question.subject.questions_count %></span>
         </span>
-          <%= question.description %></h6>
-          <% question.answers.each do |answer| %>
+        <%= question.description %></h6>
+        <% question.answers.each do |answer| %>
           <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
               <strong class="d-block text-gray-dark"><%= radio_button_tag 'answer_id',
